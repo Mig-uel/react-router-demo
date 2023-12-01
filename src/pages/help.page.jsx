@@ -1,11 +1,16 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, NavLink } from 'react-router-dom'
 
 const Help = () => {
   return (
-    <main>
-      <h1>Need Help? You&apos;re at the right spot!</h1>
+    <section className='help-layout'>
+      <h1>Help</h1>
+      <nav>
+        <NavLink to='faq'>F.A.Q.</NavLink>
+        <NavLink to='contact'>Contact Us</NavLink>
+      </nav>
+
       <Outlet />
-    </main>
+    </section>
   )
 }
 
