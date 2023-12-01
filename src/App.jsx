@@ -1,14 +1,10 @@
-import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom'
-
-// pages
-import Home from './pages/Home.component'
-import About from './pages/about.component'
+import { Outlet, NavLink } from 'react-router-dom'
 
 import './App.css'
 
 function App() {
   return (
-    <BrowserRouter>
+    <>
       <header>
         <nav>
           <h1>Jobarouter</h1>
@@ -17,12 +13,9 @@ function App() {
         </nav>
       </header>
       <main>
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path='about' element={<About />} />
-        </Routes>
+        <Outlet />
       </main>
-    </BrowserRouter>
+    </>
   )
 }
 
