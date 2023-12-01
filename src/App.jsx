@@ -1,4 +1,4 @@
-import { Outlet, NavLink } from 'react-router-dom'
+import { Outlet, NavLink, Link } from 'react-router-dom'
 
 import './App.css'
 
@@ -7,7 +7,9 @@ function App() {
     <>
       <header>
         <nav>
-          <h1>Jobarouter</h1>
+          <Link to='/'>
+            <h1>Jobarouter</h1>
+          </Link>
           <NavLink to='/'>Home</NavLink>
           <NavLink to='about'>About</NavLink>
           <NavLink to='help'>Help</NavLink>
