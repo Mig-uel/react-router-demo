@@ -16,6 +16,7 @@ import About from './pages/about.page.jsx'
 import Help from './pages/help.page.jsx'
 import FAQ from './pages/help/faq.page.jsx'
 import Contact from './pages/help/contact.page.jsx'
+import NotFound from './pages/not-found.page.jsx'
 
 // first parent route is the layout route, the use outlet in whatever component you used
 const router = createBrowserRouter(
@@ -27,6 +28,8 @@ const router = createBrowserRouter(
         <Route path='faq' element={<FAQ />} />
         <Route path='contact' element={<Contact />} />
       </Route>
+
+      <Route path='*' element={<NotFound />} />
     </Route>
   )
 )
