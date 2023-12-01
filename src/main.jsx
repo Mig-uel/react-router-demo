@@ -14,8 +14,8 @@ import App from './App.jsx'
 import Home from './pages/home.page.jsx'
 import About from './pages/about.page.jsx'
 import Help from './pages/help.page.jsx'
-import FAQ from './pages/faq.page.jsx'
-import Contact from './pages/contact.page.jsx'
+import FAQ from './pages/help/faq.page.jsx'
+import Contact from './pages/help/contact.page.jsx'
 
 // first parent route is the layout route, the use outlet in whatever component you used
 const router = createBrowserRouter(
@@ -24,7 +24,7 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path='about' element={<About />} />
       <Route path='help' element={<Help />}>
-        <Route index element={<FAQ />} />
+        <Route path='faq' element={<FAQ />} />
         <Route path='contact' element={<Contact />} />
       </Route>
     </Route>
