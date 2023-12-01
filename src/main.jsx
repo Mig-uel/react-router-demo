@@ -11,8 +11,11 @@ import {
 
 // Components
 import App from './App.jsx'
-import Home from './pages/Home.component.jsx'
-import About from './pages/about.component.jsx'
+import Home from './pages/home.page.jsx'
+import About from './pages/about.page.jsx'
+import Help from './pages/help.page.jsx'
+import FAQ from './pages/faq.page.jsx'
+import Contact from './pages/contact.page.jsx'
 
 // first parent route is the layout route, the use outlet in whatever component you used
 const router = createBrowserRouter(
@@ -20,9 +23,14 @@ const router = createBrowserRouter(
     <Route path='/' element={<App />}>
       <Route index element={<Home />} />
       <Route path='about' element={<About />} />
+      <Route path='help' element={<Help />}>
+        <Route index element={<FAQ />} />
+        <Route path='contact' element={<Contact />} />
+      </Route>
     </Route>
   )
 )
+// nested routes => will render help layout and the index/default element which is the FAQ component => /help/faq or /help/contact
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
