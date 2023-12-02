@@ -21,6 +21,9 @@ import CareersLayout from './layouts/careers-layout.page.jsx'
 import Careers from './pages/careers/careers.page.jsx'
 import CareerDetails from './pages/careers/career-details.page.jsx'
 
+// route error page
+import CareerError from './pages/careers/career-error.page.jsx'
+
 // first parent route is the layout route, the use outlet in whatever component you used
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,12 +35,19 @@ const router = createBrowserRouter(
         <Route path='contact' element={<Contact />} />
       </Route>
 
-      <Route path='careers' element={<CareersLayout />}>
+      <Route
+        path='careers'
+        element={<CareersLayout />}
+        errorElement={<CareerError />}
+      >
         <Route
           index
           element={<Careers />}
           loader={async () => {
             const res = await fetch('http://localhost:3001/careers')
+
+            if (!res.ok) throw new Error('Could not fetch the careers')
+
             return await res.json()
           }}
         />
@@ -48,6 +58,7 @@ const router = createBrowserRouter(
           loader={async ({ params: { id } }) => {
             const res = await fetch('http://localhost:3001/careers/' + id)
 
+            if (!res.ok) throw new Error('Could not find that career')
             return await res.json()
           }}
         />
