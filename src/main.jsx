@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom/client'
 import {
   createBrowserRouter,
   createRoutesFromElements,
+  redirect,
   Route,
   RouterProvider,
 } from 'react-router-dom'
@@ -32,7 +33,28 @@ const router = createBrowserRouter(
       <Route path='about' element={<About />} />
       <Route path='help' element={<Help />}>
         <Route path='faq' element={<FAQ />} />
-        <Route path='contact' element={<Contact />} />
+        <Route
+          path='contact'
+          element={<Contact />}
+          action={async ({ request }) => {
+            // console.log(request)
+            const data = await request.formData()
+
+            const submission = {
+              email: data.get('email'),
+              message: data.get('message'),
+            }
+
+            // console.log(submission)
+
+            //send the post request
+            if (submission.message.trim().length < 10)
+              return { error: 'Message must be over 10 characters long' }
+
+            //redirect the user
+            return redirect('/')
+          }}
+        />
       </Route>
 
       <Route
