@@ -1,21 +1,14 @@
-import { Outlet, NavLink, Link } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 
+import Nav from './components/nav.component'
+import Breadcrumbs from './components/breadcrumbs.component'
 import './App.css'
 
 function App() {
   return (
     <>
-      <header>
-        <nav>
-          <Link to='/'>
-            <h1>Jobarouter</h1>
-          </Link>
-          <NavLink to='/'>Home</NavLink>
-          <NavLink to='about'>About</NavLink>
-          <NavLink to='careers'>Careers</NavLink>
-          <NavLink to='help'>Help</NavLink>
-        </nav>
-      </header>
+      <Nav />
+      <Breadcrumbs />
       <main>
         <Outlet />
       </main>
